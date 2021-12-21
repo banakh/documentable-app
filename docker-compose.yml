@@ -40,7 +40,7 @@ services:
     networks:
       - documentable-net
     ports:
-      - 5432:5432
+      - 5435:5432
 
   documentable-graphql:
     container_name: documentable-graphql
