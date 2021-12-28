@@ -56,7 +56,7 @@ services:
       - documentable-net
     ports:
       - 5433:5433
-    command: ["--connection", "${DATABASE_URL}", "--port", "5433", "--schema", "public", "--append-plugins", "postgraphile-plugin-connection-filter,tracing-plugin", "--enhance-graphiql", "--jwt-token-identifier", "public.jwt_token", "--jwt-secret", "${JWT_SECRET}"]
+    command: ["--connection", "${DATABASE_URL}", "--port", "5433", "--schema", "app_public", "--default-role", "app_anonymous", "--jwt-secret", "${JWT_SECRET}", "--jwt-token-identifier", "app_public.jwt_token", "--enhance-graphiql", "--append-plugins", "postgraphile-plugin-connection-filter,tracing-plugin"]
 
   documentable-vue-app:
     container_name: documentable-vue-app
