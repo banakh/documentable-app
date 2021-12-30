@@ -111,8 +111,8 @@ query userGroups {
 query userFoldersByGroups {
   allGroups {
     nodes {
-    	id
-    	name
+      id
+      name
       foldersByGroupId {
         nodes {
           id
