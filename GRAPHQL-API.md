@@ -4,7 +4,7 @@
 
 ### Registration
 
-```
+```graphql
 mutation register($username: String!, $password: String!) {
   register(input: {username: $username, password: $password}) {
     user {
@@ -17,7 +17,7 @@ mutation register($username: String!, $password: String!) {
 
 ### Authorization and Authentication
 
-```
+```graphql
 mutation authenticate($username: String!, $password: String!) {
   authenticate(input: {username: $username, password: $password}) {
     jwtToken
@@ -33,7 +33,7 @@ Authorization: Bearer jwtToken
 
 ### Create new group
 
-```
+```graphql
 mutation createGroup($userId: UUID!, $groupName: String!) {
   addGroup(input: {userId: $userId, name: $groupName}) {
     results {
@@ -46,7 +46,7 @@ mutation createGroup($userId: UUID!, $groupName: String!) {
 
 ### Create new folder
 
-```
+```graphql
 mutation createFolder($groupId: UUID!, $folderName: String!) {
   createFolder(input: { folder: { groupId: $groupId name: $folderName } }) {
     folder {
@@ -58,7 +58,7 @@ mutation createFolder($groupId: UUID!, $folderName: String!) {
 
 ### Create new document
 
-```
+```graphql
 mutation createDocument($folderId: UUID!, $ownerId: UUID!, $documentName: String!, $documentBody: String) {
   createDocument(
     input: {document: { folderId: $folderId, ownerId: $ownerId, name: $documentName, body: $documentBody }}
@@ -77,7 +77,7 @@ mutation createDocument($folderId: UUID!, $ownerId: UUID!, $documentName: String
 
 ### Get User info
 
-```
+```graphql
 query allUsers {
   allUsers {
     nodes {
@@ -92,7 +92,7 @@ query allUsers {
 
 ### Get User Groups
 
-```
+```graphql
 query userGroups {
   allMemberships {
     nodes {
@@ -107,7 +107,7 @@ query userGroups {
 
 ### Get User Folders by Groups
 
-```
+```graphql
 query userFoldersByGroups {
   allGroups {
     nodes {
@@ -126,7 +126,7 @@ query userFoldersByGroups {
 
 ### Get User Documents
 
-```
+```graphql
 query userDocumentsByFolders {
   allFolders {
     nodes {
