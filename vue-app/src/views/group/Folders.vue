@@ -29,12 +29,6 @@
           <span  v-if="!scope.row.createFile" style="margin-left: 10px">{{ scope.row.name }}</span>
         </template>
       </el-table-column>
-      <el-table-column prop="body">
-        <template #default="scope">
-          <el-input v-model="documentBody" :rows="1" type="textarea" v-if="scope.row.createFile" placeholder="Document body" />
-          <span v-else style="margin-left: 10px">{{ scope.row.body }}</span>
-        </template>
-      </el-table-column>
       <el-table-column fixed="right" width="200">
         <template #header>
           <el-button-group v-if="canCreateFolder" size="small">
@@ -55,7 +49,11 @@
             <el-button :icon="Delete"></el-button>
           </el-button-group>
           <el-button-group size="small" v-else>
-            <el-button :icon="Edit"></el-button>
+            <router-link :to="{ name: 'document', params: { documentId: scope.row.id }}"  custom
+                         v-slot="{ navigate }">
+              <el-button @click="navigate" :icon="Edit"></el-button>
+            </router-link>
+
             <el-button :icon="Delete"></el-button>
           </el-button-group>
         </template>
@@ -118,7 +116,6 @@ const updateDocument = useMutation(document);
 
 // const data = ref([]);
 const newFolder = ref("");
-const documentBody = ref("");
 const documentName = ref("");
 const route = useRoute()
 const canCreateFolder = ref(false);
@@ -148,7 +145,7 @@ const createFolder = async () => {
   }
 };
 const createDocument = async (id) => {
-  const result = await updateDocument.executeMutation({ folderId: id , ownerId: 'd9baed9a-5bba-4a8f-9c6a-e348a1f6f3c7', documentName:documentName.value, documentBody:documentBody.value});
+  const result = await updateDocument.executeMutation({ folderId: id , ownerId: 'd9baed9a-5bba-4a8f-9c6a-e348a1f6f3c7', documentName:documentName.value});
   if (result.error) {
     console.log("---", result.error);
   } else {
