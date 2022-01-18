@@ -1,0 +1,28 @@
+/**
+  Global App Variables
+*/
+$--font-path: '~element-plus/theme-chalk/fonts';
+
+$--colors: (
+        'primary': (
+                'base': #39234d,
+        )
+);
+
+$--main: (
+        'padding': 0px,
+);
+
+$--border-color: (
+        'base': #808AA6,
+        'light': #e4e7ed,
+        'lighter': #ebeef5,
+        'extra-light': #f2f6fc,
+);
+
+$--text-color: (
+        'primary': #303133,
+        'regular': #606266,
+        'secondary': #808AA6,
+        'placeholder': #c0c4cc,
+);
